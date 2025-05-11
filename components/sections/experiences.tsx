@@ -17,7 +17,7 @@ export default function Experiences() {
     {
       span: "July 2019 - Mar 2025",
       job: "Software Engineer",
-      jobDescription: "Part of and collaborated with excellent team of software engineers. Planned and improve each feature implementation which followed company standard. ",
+      jobDescription: "Collaborated with a team of software engineers, designers, and project managers to brainstorm effective solutions based on client needs. Planned, improve and build each feature implementation which followed company standard.",
       company: "White Widget",
       stack: "Full Stack Developer",
       link: "https://whitewidget.com/",
@@ -25,7 +25,7 @@ export default function Experiences() {
     {
       span: "June 2017 - July 2019",
       job: "Software Engineer",
-      jobDescription: "Worked with a team of software engineers focusing on build and maintain web applications. Learned different new technologies and frameworks for the project. Initiate and implement new steps on the development process to improve the quality of the product.",
+      jobDescription: "Contributed as part of a software engineering team focusing on build and maintain web applications. Experienced in a wide range of technologies across full-stack web and cross-platform development. Initiated and implemented new steps in the development process to enhance product quality.",
       company: "Valueline Systems and Solutions Corp",
       stack: "Full Stack Developer",
       link: "https://valueline.com.ph/",
