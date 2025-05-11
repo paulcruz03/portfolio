@@ -17,7 +17,7 @@ export default function Experiences() {
     {
       span: "July 2019 - Mar 2025",
       job: "Software Engineer",
-      jobDescription: "Collaborated with a team of software engineers, designers, and project managers to brainstorm effective solutions based on client needs. Planned, improve and build each feature implementation which followed company standard.",
+      jobDescription: "Collaborated with a team of software engineers, designers, and project managers to brainstorm effective solutions based on client needs. Planned, improved, and built each feature implementation according to company standards, leveraging a broad technical background across diverse technologies.",
       company: "White Widget",
       stack: "Full Stack Developer",
       link: "https://whitewidget.com/",
