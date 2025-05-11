@@ -21,7 +21,7 @@ export default function Left() {
             </a>
           </li>
           <li>
-            <a href="mailto:paulcruzthepogi@gmail.com" className="inline-flex items-center gap-2 px-2 py-2 hover:bg-slate-800 hover:text-white rounded-2xl text-whiterounded-lg transition">
+            <a href="mailto:cruzpauljason97@gmail.com" className="inline-flex items-center gap-2 px-2 py-2 hover:bg-slate-800 hover:text-white rounded-2xl text-whiterounded-lg transition">
               <Mail />
             </a>
           </li>
