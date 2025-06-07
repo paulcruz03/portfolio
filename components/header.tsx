@@ -84,9 +84,6 @@ export default function Header() {
               <span>
                 <House />
               </span>
-              <span>
-                PJC
-              </span>
             </Link>
           </li>
 
