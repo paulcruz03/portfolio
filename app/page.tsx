@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Linkedin, Github, Mail, ExternalLink, Menu, X, ArrowUp } from 'lucide-react';
+import { Linkedin, Github, Mail, ExternalLink, ArrowUp } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -13,7 +14,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default function EnhancedPortfolio() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   
   // Refs for animations
@@ -26,6 +27,7 @@ export default function EnhancedPortfolio() {
   const progressBarRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollToPlugin);
     const ctx = gsap.context(() => {
       // Progress bar animation
       gsap.to(progressBarRef.current, {
@@ -270,14 +272,6 @@ export default function EnhancedPortfolio() {
     tools: ["Google Cloud", "AWS", "Docker", "Terraform", "Git", "PostgreSQL", "MySQL", "GraphDB", "Stripe", "PayMongo", "Brankas", "PayMaya", "Mapbox", "Firebase"]
   };
 
-  const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" }
-  ];
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -339,77 +333,15 @@ export default function EnhancedPortfolio() {
         style={{ transform: 'scaleX(0)' }}
       />
 
-      {/* Navigation */}
-      <nav
-        ref={navRef}
-        className="fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800 z-40"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div
-              className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent cursor-pointer"
-              onClick={scrollToTop}
-            >
-              PC
-            </div>
-
-            {/* Desktop menu */}
-            <div className="hidden md:flex space-x-8">
-              {navItems.map((item, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-slate-400 hover:text-blue-400 transition-colors"
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleHoverOut}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              className="md:hidden text-slate-400 hover:text-blue-400"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-slate-900 border-t border-slate-800">
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left text-slate-400 hover:text-blue-400 transition-colors"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-
       {/* Hero Section */}
       <section ref={heroRef} className="min-h-screen flex items-center pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text */}
             <div>
-              <div className="hero-badge inline-block mb-4">
-                <span className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full text-sm border border-blue-600/30">
-                  Available for work
-                </span>
-              </div>
 
               <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-slate-200 to-slate-400 bg-clip-text text-transparent">
-                Hi, I'm Paul Cruz
+                Hi, I&apos;m Paul Cruz
               </h1>
 
               <h2 className="hero-subtitle text-2xl md:text-3xl font-semibold text-slate-400 mb-6">
@@ -420,26 +352,6 @@ export default function EnhancedPortfolio() {
                 Passionate web developer specializing in building exceptional digital experiences. 
                 Currently focused on building accessible, user-centered products.
               </p>
-
-              <div className="hero-buttons flex flex-wrap gap-4 mb-8">
-                <button
-                  onClick={() => scrollToSection('#contact')}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-colors"
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleHoverOut}
-                >
-                  Get In Touch
-                </button>
-
-                <button
-                  onClick={() => scrollToSection('#projects')}
-                  className="px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold transition-colors"
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleHoverOut}
-                >
-                  View Projects
-                </button>
-              </div>
 
               <div className="flex gap-4">
                 <a
@@ -472,33 +384,6 @@ export default function EnhancedPortfolio() {
                 </a>
               </div>
             </div>
-
-            {/* Right side - Visual element */}
-            <div className="relative hidden lg:block">
-              <div className="relative w-full h-96">
-                {/* Floating cards */}
-                <div className="floating-card-1 absolute top-10 left-10 bg-slate-800 p-4 rounded-lg shadow-xl border border-slate-700">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm">Available</span>
-                  </div>
-                </div>
-
-                <div className="floating-card-2 absolute bottom-10 right-10 bg-slate-800 p-4 rounded-lg shadow-xl border border-slate-700">
-                  <div className="text-sm">
-                    <div className="text-blue-400 font-semibold">6+ Years</div>
-                    <div className="text-slate-400">Experience</div>
-                  </div>
-                </div>
-
-                <div className="floating-card-3 absolute top-1/2 right-0 bg-slate-800 p-4 rounded-lg shadow-xl border border-slate-700">
-                  <div className="text-sm">
-                    <div className="text-blue-400 font-semibold">10+</div>
-                    <div className="text-slate-400">Projects</div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -516,24 +401,14 @@ export default function EnhancedPortfolio() {
             {/* Right side - Content */}
             <div className="about-content space-y-6 text-lg leading-relaxed text-slate-400">
               <p>
-                I'm a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with meticulous execution of every feature.
+                I&apos;m a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with meticulous execution of every feature.
               </p>
               <p>
                 I have experience with a wide range of technologies and enjoy collaborating with teams to build high-quality software that meets user needs. My current goal is to secure a position in an organization that offers both challenge and opportunities for personal growth.
               </p>
               <p>
-                In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it's one of the best ways to learn about different cultures and perspectives.
+                In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it&apos;s one of the best ways to learn about different cultures and perspectives.
               </p>
-
-              <div className="pt-4">
-                <button
-                  onClick={() => scrollToSection('#contact')}
-                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold"
-                >
-                  Let's connect
-                  <span>→</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -653,7 +528,7 @@ export default function EnhancedPortfolio() {
                             <h3 className="text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
                               {exp.company}
                             </h3>
-                            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <ExternalLink className={`w-4 h-4 opacity-0 transition-opacity ${exp.link !== '#' ? 'group-hover:opacity-100' : ''}`} />
                           </div>
                         </div>
 
@@ -762,26 +637,6 @@ export default function EnhancedPortfolio() {
               <span>→</span>
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Contact/CTA Section */}
-      <section id="contact" className="cta-section py-24 px-4 bg-slate-900/50">
-        <div className="cta-content max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-200">Let's Work Together</h2>
-          <p className="text-xl text-slate-400 mb-8">
-            I'm always interested in hearing about new projects and opportunities.
-          </p>
-          
-          <a
-            href="mailto:cruzpauljason97@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold text-lg transition-colors"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHoverOut}
-          >
-            <Mail className="w-5 h-5" />
-            Get In Touch
-          </a>
         </div>
       </section>
 
