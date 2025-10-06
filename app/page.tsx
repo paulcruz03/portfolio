@@ -14,7 +14,6 @@ if (typeof window !== 'undefined') {
 }
 
 export default function EnhancedPortfolio() {
-  const [, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   
   // Refs for animations
@@ -270,18 +269,6 @@ export default function EnhancedPortfolio() {
     programmingLanguages: ["JavaScript", "TypeScript", "Python", "GoLang", "PHP"],
     frameworks: ["React", "NextJS", "VueJS", "Node.js", "WordPress", "PrestaShop", "CSS", "SASS"],
     tools: ["Google Cloud", "AWS", "Docker", "Terraform", "Git", "PostgreSQL", "MySQL", "GraphDB", "Stripe", "PayMongo", "Brankas", "PayMaya", "Mapbox", "Firebase"]
-  };
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: element, offsetY: 80 },
-        ease: "power3.inOut"
-      });
-    }
-    setMobileMenuOpen(false);
   };
 
   const scrollToTop = () => {
