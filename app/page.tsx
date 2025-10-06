@@ -7,6 +7,8 @@ import { Linkedin, Github, Mail, ExternalLink, ArrowUp } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import MetaBalls from '../components/MetaBalls';
+import DecryptedText from '../components/DecryptedText';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -335,11 +337,6 @@ export default function EnhancedPortfolio() {
                 Full Stack Software Engineer
               </h2>
 
-              <p className="hero-description text-lg text-slate-500 mb-8 leading-relaxed max-w-xl">
-                Passionate web developer specializing in building exceptional digital experiences. 
-                Currently focused on building accessible, user-centered products.
-              </p>
-
               <div className="flex gap-4">
                 <a
                   href="https://www.linkedin.com/in/paulcruz03/"
@@ -371,6 +368,21 @@ export default function EnhancedPortfolio() {
                 </a>
               </div>
             </div>
+            {/* Right side */}
+            <div className="relative w-full h-96 lg:h-[500px]">
+              <MetaBalls
+                color="#ffffff"
+                cursorBallColor="#ffffff"
+                cursorBallSize={1}
+                ballCount={20}
+                animationSize={30}
+                enableMouseInteraction={true}
+                enableTransparency={true}
+                hoverSmoothness={0.05}
+                clumpFactor={1}
+                speed={0.3}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -387,15 +399,27 @@ export default function EnhancedPortfolio() {
 
             {/* Right side - Content */}
             <div className="about-content space-y-6 text-lg leading-relaxed text-slate-400">
-              <p>
-                I&apos;m a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with meticulous execution of every feature.
-              </p>
-              <p>
-                I have experience with a wide range of technologies and enjoy collaborating with teams to build high-quality software that meets user needs. My current goal is to secure a position in an organization that offers both challenge and opportunities for personal growth.
-              </p>
-              <p>
-                In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it&apos;s one of the best ways to learn about different cultures and perspectives.
-              </p>
+              <DecryptedText
+                text="I'm a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with careful execution of every feature."
+                animateOn="view"
+                speed={20}
+                maxIterations={3}
+                sequential={true}
+              />
+              <DecryptedText
+                text="I have experience with a wide range of technologies and enjoy collaborating with teams to build high-quality software that meets user needs. My current goal is to secure a position in an organization that offers both challenge and opportunities for personal growth."
+                animateOn="view"
+                speed={20}
+                maxIterations={3}
+                sequential={true}
+              />
+              <DecryptedText
+                text="In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it's one of the best ways to learn about different cultures and perspectives."
+                animateOn="view"
+                speed={20}
+                maxIterations={3}
+                sequential={true}
+              />
             </div>
           </div>
         </div>
