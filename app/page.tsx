@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import MetaBalls from '../components/MetaBalls';
 import DecryptedText from '../components/DecryptedText';
+import SplitText from "../components/SplitText";
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -213,7 +214,7 @@ export default function EnhancedPortfolio() {
     {
       span: "August 2025 - Present",
       job: "Freelance Software Developer",
-      jobDescription: "Worked as a freelancer handling small-to-medium projects for local clients. Focused on building custom web application, optimizing websites, and delivering quick solutions under tight deadlines.",
+      jobDescription: "Focused on building custom web application, optimizing websites, and delivering quick solutions under tight deadlines.",
       company: "Self-Employed",
       stack: "Full Stack Developer",
       link: "#", // no company link since freelance
@@ -393,33 +394,28 @@ export default function EnhancedPortfolio() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Heading */}
             <div className="about-title lg:sticky lg:top-24">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-200">About Me</h2>
+              <SplitText
+                text="About Me"
+                onLetterAnimationComplete={undefined}
+                className="text-4xl md:text-5xl font-bold mb-4 text-slate-200"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+              />
               <div className="w-20 h-1 bg-blue-600 rounded-full" />
             </div>
 
             {/* Right side - Content */}
             <div className="about-content space-y-6 text-lg leading-relaxed text-slate-400">
-              <DecryptedText
-                text="I'm a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with careful execution of every feature."
-                animateOn="view"
-                speed={20}
-                maxIterations={3}
-                sequential={true}
-              />
-              <DecryptedText
-                text="I have experience with a wide range of technologies and enjoy collaborating with teams to build high-quality software that meets user needs. My current goal is to secure a position in an organization that offers both challenge and opportunities for personal growth."
-                animateOn="view"
-                speed={20}
-                maxIterations={3}
-                sequential={true}
-              />
-              <DecryptedText
-                text="In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it's one of the best ways to learn about different cultures and perspectives."
-                animateOn="view"
-                speed={20}
-                maxIterations={3}
-                sequential={true}
-              />
+              <p>I&nbsp;m a software engineer passionate about delivering thoughtful, well-designed solutions and applications. I excel at bridging strategic planning with careful execution of every feature.</p>
+              <p>I have experience with a wide range of technologies and enjoy collaborating with teams to build high-quality software that meets user needs. My current goal is to secure a position in an organization that offers both challenge and opportunities for personal growth.</p>
+              <p>In my free time, I enjoy playing video games and spending time with family and friends. I also love to travel and explore new places—it&nbsp;s one of the best ways to learn about different cultures and perspectives.</p>
             </div>
           </div>
         </div>
@@ -429,7 +425,20 @@ export default function EnhancedPortfolio() {
       <section id="skills" ref={skillsRef} className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="skills-title text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-200">Skills & Technologies</h2>
+            <SplitText
+              text="Skills & Technologies"
+              onLetterAnimationComplete={undefined}
+              className="text-4xl md:text-5xl font-bold mb-4 text-slate-200"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto" />
           </div>
 
@@ -461,7 +470,9 @@ export default function EnhancedPortfolio() {
               onMouseLeave={handleCardHoverOut}
             >
               <div className="text-4xl mb-4">🧩</div>
-              <h3 className="text-xl font-semibold mb-4 text-slate-200">Frameworks & Libraries</h3>
+              <h3 className="text-xl font-semibold mb-4 text-slate-200">
+                Frameworks & Libraries
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {skills.frameworks.map((skill, i) => (
                   <span
@@ -501,7 +512,20 @@ export default function EnhancedPortfolio() {
       <section id="experience" ref={experienceRef} className="py-24 px-4 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="experience-title text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-200">Work Experience</h2>
+            <SplitText
+              text="Work Experience"
+              onLetterAnimationComplete={undefined}
+              className="text-4xl md:text-5xl font-bold mb-4 text-slate-200"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto" />
           </div>
 
@@ -572,10 +596,20 @@ export default function EnhancedPortfolio() {
       <section id="projects" ref={projectsRef} className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="projects-title text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-200">Featured Projects</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and experience.
-            </p>
+            <SplitText
+              text="Featured Projects"
+              onLetterAnimationComplete={undefined}
+              className="text-4xl md:text-5xl font-bold mb-4 text-slate-200"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mt-4" />
           </div>
 
