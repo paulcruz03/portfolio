@@ -8,7 +8,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import MetaBalls from '../components/MetaBalls';
-import DecryptedText from '../components/DecryptedText';
 import SplitText from "../components/SplitText";
 
 // Register GSAP plugins
